@@ -1,7 +1,7 @@
 body {
   font-family: 'Schoolbell', cursive;
   padding: 0 100px 0 100px;
-  background: url(images/masterBackground.jpg) repeat;
+  background: url(../images/masterBackground.jpg) repeat;
   font: white;
 }
 #player {
@@ -49,6 +49,10 @@ border: dashed black 3px;
 display: inline-block;
 text-align: center;
 width: 250px;
+}
+
+#gameWinner {
+display: none;
 }
 
 #gamePannel {

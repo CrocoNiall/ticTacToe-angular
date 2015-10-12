@@ -8,12 +8,36 @@ function GameController(){
   this.oMoves = [];
   this.xWinCount = 0;
   this.oWinCount = 0;
-  
+  this.winner = ''
   this.board = [
     [ { value: '', index: 0 }, { value: '', index: 1 }, { value: '', index: 2 } ],
     [ { value: '', index: 3 }, { value: '', index: 4 }, { value: '', index: 5 } ],
     [ { value: '', index: 6 }, { value: '', index: 7 }, { value: '', index: 8 } ]
     ];
+
+  // this.resetGameBoard();
+
+  // this.resetGameBoard = function(){
+  //   this.board = [
+  //     [ { value: '', index: 0 }, { value: '', index: 1 }, { value: '', index: 2 } ],
+  //     [ { value: '', index: 3 }, { value: '', index: 4 }, { value: '', index: 5 } ],
+  //     [ { value: '', index: 6 }, { value: '', index: 7 }, { value: '', index: 8 } ]
+  //     ];
+  // }
+
+
+
+  this.resetGameBoard = function(){
+    $('#winnerContainer').slideUp('slow')
+
+      this.board = [
+    [ { value: '', index: 0 }, { value: '', index: 1 }, { value: '', index: 2 } ],
+    [ { value: '', index: 3 }, { value: '', index: 4 }, { value: '', index: 5 } ],
+    [ { value: '', index: 6 }, { value: '', index: 7 }, { value: '', index: 8 } ]
+    ];
+    this.xMoves = []
+    this.oMoves = []
+  }
 
 
   this.winningCombinations = [ [0,1,2],[3,4,5],
@@ -30,10 +54,9 @@ function GameController(){
         this.checkWinner(this.xMoves, 'x')
       }
       else if (this.currentPlayer === 'o'){ 
-        this.xMoves.push(cell.index) 
+        this.oMoves.push(cell.index) 
         this.checkWinner(this.oMoves, 'o')
       }
-
       this.changePlayer(this.currentPlayer)
     }
   }
@@ -54,30 +77,37 @@ function GameController(){
         }
 
         if(winCounter === 3){
-          alert("Game over, " + player + " wins!");
-          this.incramentPlayerCount(player)
+          this.setWinner();
+          this.incramentPlayerCount(player);
         }
       }
     }
   }
 
-  this.incramentPlayerCount = function(player) {
-    player === 'x' ? this.xWinCount++ : this.oWinCount++
+  this.setWinner = function(){
+    $('#winnerContainer').slideDown('slow')
+
   }
 
+  this.checkGameWinner = function(){
+    if(this.xWinCount === 3){
+      this.setGameWinner()
+    }
+    if(this.oWinCount === 3){
+      this.setGameWinner()
+    }
 
+  }
 
+  this.setGameWinner = function(){
+    $('#innerContainer').slideUp('slow')
+    $('#gameWinner').slideDown('slow')
+  }
 
-
-
-
-
-
-
-
-
-
-
-
+  this.incramentPlayerCount = function(player) {
+    this.winner = player
+    player === 'x' ? this.xWinCount++ : this.oWinCount++
+    this.checkGameWinner()
+  }
 
 }

@@ -17,7 +17,7 @@
     <div id= "gameBoard">
 
       <div class='row'>
-        <div class="gameBoardSquare" ng-repeat="cell in Game.board[0]" ng-click="Game.move(cell)" data-num="{{ cell.index }}">{{ cell.value }}</div>
+        <div class="gameBoardSquare" ng-repeat="cell in Game.board[0]" ng-click="Game.move(cell)">{{ cell.value }}</div>
       </div>
         
       <div class='row'>
@@ -54,13 +54,17 @@
 
     <div id="winnerContainer">
       <h2>The winner is:</h2>
-      <p><b id="winner"></b></p>
-      <p> Click to play again!</p>
+      <p><b id="winner"></b>{{ Game.winner }}</p>
+      <p ng-click='Game.resetGameBoard()'> Click to play again!</p>
+    </div>
+
+    <div id='gameWinner'>
+    <h1>Player: {{ Game.winner }} Won!</h1>
     </div>
 
   </div>
 
-
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js'></script>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.0/angular.js'></script>
   <script src='app.js'></script>
   <script src='js/GameController.js'></script>

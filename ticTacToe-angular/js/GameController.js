@@ -3,8 +3,6 @@ angular.module('ticTacToeApp')
 
 function GameController(){
   
-
-
   this.board = [
     [ { value: '-', index: 1}, { value: '-', index: 2}, { value: '-', index: 3 } ],
     [ { value: '-', index: 4 }, { value: '-', index: 5 }, { value: '-', index: 6 } ],

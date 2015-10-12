@@ -21,11 +21,11 @@
       </div>
         
       <div class='row'>
-        <div class="gameBoardSquare" ng-repeat="cell in Game.board[1]" >{{ cell.value }}</div>
+        <div class="gameBoardSquare" ng-repeat="cell in Game.board[1]" data-num="{{ cell.index }}">{{ cell.value }}</div>
       </div>
 
       <div class='row'>
-        <div class="gameBoardSquare" ng-repeat="cell in Game.board[2]" >{{ cell.value }}</div>
+        <div class="gameBoardSquare" ng-repeat="cell in Game.board[2]" data-num="{{ cell.index }}">{{ cell.value }}</div>
       </div>
          
     </div>

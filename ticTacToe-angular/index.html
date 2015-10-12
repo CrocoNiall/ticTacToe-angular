@@ -1,17 +1,64 @@
 <!DOCTYPE html>
 <html lang="en" ng-app='ticTacToeApp'>
+
 <head>
   <meta charset="UTF-8">
   <title>TicTacToe</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link href='http://fonts.googleapis.com/css?family=Schoolbell' rel='stylesheet' type='text/css'>
 </head>
-<body>
+
+<body ng-controller='GameController as Game'>
   
-  
+  <h1>Tic  Tac  Toe</h1>
+  <p id='player'> Current Player: <b id='currentPlayer'> X </b></p>
 
+  <div id="innerContainer">
+    <div id= "gameBoard">
 
+      <div class='row'>
+        <div class="gameBoardSquare" ng-repeat="cell in Game.board[0]" data-num="{{ cell.index }}">{{ cell.value }}</div>
+      </div>
+        
+      <div class='row'>
+        <div class="gameBoardSquare" ng-repeat="cell in Game.board[1]" >{{ cell.value }}</div>
+      </div>
 
+      <div class='row'>
+        <div class="gameBoardSquare" ng-repeat="cell in Game.board[2]" >{{ cell.value }}</div>
+      </div>
+         
+    </div>
 
+    <div id="gamePannel">
+    <h2>Game Rules</h2>
+    <ol>
+      <li>First play to get three in a row, wins!</li>
+      <li>No Cheating!</li>
+      <li>Don't be a bad loser!</li>
+    </ol>
+    <h2>Game Settings </h2>
+    <form>
+      <input type="radio" name="compPlay" id="compPlayTrue" value='true' checked>1 Player (vs computer)      
+      <input type="radio" name="compPlay" id="compPlayFalse" value='false'>2 Players
+    </form> 
+    </div>
 
+    <div id="scoreCounter">
+      <h2>Scores</h2>
+      <i>Player X:  <b id="xTotal"></b></i>
+      <br>
+      <br>
+      <i>Player O:  <b id="oTotal"></b></i>
+    </div>
+
+    <div id="winnerContainer">
+      <h2>The winner is:</h2>
+      <p><b id="winner"></b></p>
+      <p> Click to play again!</p>
+    </div>
+
+  </div>
 
 
   <script src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.0/angular.js'></script>

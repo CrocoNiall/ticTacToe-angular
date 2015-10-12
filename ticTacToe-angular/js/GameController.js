@@ -15,17 +15,17 @@ function GameController(){
     [ { value: '', index: 6 }, { value: '', index: 7 }, { value: '', index: 8 } ]
     ];
 
-  // this.resetGameBoard();
 
-  // this.resetGameBoard = function(){
-  //   this.board = [
-  //     [ { value: '', index: 0 }, { value: '', index: 1 }, { value: '', index: 2 } ],
-  //     [ { value: '', index: 3 }, { value: '', index: 4 }, { value: '', index: 5 } ],
-  //     [ { value: '', index: 6 }, { value: '', index: 7 }, { value: '', index: 8 } ]
-  //     ];
-  // }
+  this.resetGame = function(){
+    console.log('reset')
+    this.resetGameBoard()
+    this.xWinCount = 0;
+    this.oWinCount = 0;
+    winner = ''
+    $('#innerContainer').slideDown('slow');
+    $('#gameWinner').slideUp('slow');
 
-
+  }
 
   this.resetGameBoard = function(){
     $('#winnerContainer').slideUp('slow')
@@ -100,8 +100,8 @@ function GameController(){
   }
 
   this.setGameWinner = function(){
-    $('#innerContainer').slideUp('slow')
-    $('#gameWinner').slideDown('slow')
+    $('#innerContainer').slideUp('slow');
+    $('#gameWinner').slideDown('slow');
   }
 
   this.incramentPlayerCount = function(player) {

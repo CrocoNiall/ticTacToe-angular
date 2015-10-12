@@ -2,6 +2,8 @@ angular.module('ticTacToeApp')
   .controller('GameController', GameController)
 
 function GameController(){
+
+  this.currentPlayer = 'x'
   
   this.board = [
     [ { value: '-', index: 1}, { value: '-', index: 2}, { value: '-', index: 3 } ],
@@ -16,5 +18,13 @@ function GameController(){
                                [0,4,8],[2,4,6] ];
   this.currentPlayer = 'x';
 
+  this.move = function(cell){
+    cell.value = this.currentPlayer
+    this.chanePlayer(this.currentPlayer)
+  }
+
+  this.chanePlayer = function(current){
+    current === 'x' ? this.currentPlayer = 'o' : this.currentPlayer = 'x'
+  }
 
 }
